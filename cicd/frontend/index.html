@@ -10,7 +10,7 @@
   <script>
     fetch('/api/health')
       .then(r => r.json())
-      .then(d => { document.getElementById('msg').innerText = d.message; })
+      .then(d => { document.getElementById('msg').innerText = d.message.status; })
       .catch(e => { document.getElementById('msg').innerText = 'API error: ' + e; });
   </script>
 
