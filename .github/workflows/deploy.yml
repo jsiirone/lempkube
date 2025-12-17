@@ -12,12 +12,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Debug repo root
-        run: |
-         pwd
-         ls -la
-         find . -maxdepth 3 -type d
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -41,8 +35,8 @@ jobs:
       - name: Build & push backend
         uses: docker/build-push-action@v5
         with:
-          context: ./cicd/backend
-          file: Dockerfile
+          context: cicd
+          file: backend/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/lemp-backend:latest
@@ -53,8 +47,8 @@ jobs:
       - name: Build & push frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./cicd/frontend
-          file: Dockerfile
+          context: cicd
+          file: frontend/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/lemp-frontend:latest
