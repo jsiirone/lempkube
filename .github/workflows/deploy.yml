@@ -12,6 +12,12 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Debug backend folder
+        run: |
+          ls -l cicd/backend
+          wc -c cicd/backend/Dockerfile
+          cat cicd/backend/Dockerfile
+
       - name: Checkout
         uses: actions/checkout@v4
 
